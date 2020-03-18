@@ -158,8 +158,13 @@ function processDuplicateFree(list, callback) {
  * 
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function lowerCaseStrings(/* code here */) {
-  /* code here */
+function lowerCaseStrings(strings) {
+  let stringItems = [];
+    strings.forEach((arrItem) => {
+    stringItems.push(arrItem.toLowerCase());
+  })
+
+  return stringItems;
 }
 
 /**
@@ -177,8 +182,19 @@ function lowerCaseStrings(/* code here */) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
+function isItAnApple(strings) {
   /* code here */
+  let newArr = strings.map(string => {
+    if (string === 'apple') {
+      return true;
+    } else {
+      return false
+    }
+
+  });
+  
+return newArr;
+
 }
 
 /**
@@ -197,8 +213,14 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
-  /* code here */
+function removeApple(strings) {
+  const byeApple = [];
+  strings.filter((arrItem)=>{
+    if (arrItem !== 'apple') {
+      byeApple.push(arrItem)
+    }
+  })
+  return byeApple;
 }
 
 /**
@@ -217,7 +239,11 @@ function removeApple(/* code here */) {
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
 function stringSmash(strings) {
-  let flattened = strings.reduce(function(accumulator, currentValue));
+  const smash = strings.reduce((accumulator, currentVal) => {
+    return accumulator + currentVal;
+  });
+
+  return smash;
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -256,10 +282,13 @@ function getFullNames(runners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  return runners.map(function (runners) {
-    return runners.firstName.toUpperCase();
+  let allCaps = [];
+  runners.map((runner, index) => {
+    allCaps[index] = runner.first_name.toUpperCase();
   })
+  return allCaps;
 }
+
 
 /**
  * ### Challenge `getRunnersByTShirtSize`
@@ -276,10 +305,14 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  return runners.filter(function (runners) {
-    return runners.shirtSize === tShirtSize;
-  })
+  let size = runners.filter((person) => {
+    if (person.shirt_size === tShirtSize) {
+      return `${person.first_name} ${person.last_name}`;
+    }
+  });
+  return size;
 }
+
 
 /**
  * ### Challenge `tallyUpDonations`
